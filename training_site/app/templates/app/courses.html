@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Обучающий сайт</title>
+</head>
+<body>
+<h2>Список курсов</h2>
+<b><a href="{% url 'courses' %}">courses</a></b>
+<a href="{% url 'all_lessons' %}">lessons</a>
+<a href="{% url 'teachers' %}">teachers</a>
+<a style="margin-left: 20px;" href="{% url 'admin:index' %}">admin</a>
+<hr>
+<ul>
+    {% for course in courses %}
+    <li>
+        {% if course.offline %}
+        <span>offline</span>
+        {% else %}
+        <span>online</span>
+        {% endif %}
+        <span>
+            <a href="{% url 'lessons' course.id %}">{{course.name}}</a>
+        </span>
+        <span>({{course.start_date}})</span>
+    </li>
+    {% empty %}
+    Список курсов пуст
+    {% endfor %}
+</ul>
+</body>
+</html>

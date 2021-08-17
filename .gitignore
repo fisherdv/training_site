@@ -1,0 +1,4 @@
+.idea
+venv
+__pycache__
+training_site/db.sqlite3

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Список занятий</h2>
+<a href="{% url 'courses' %}">courses</a>
+<b><a href="{% url 'all_lessons' %}">lessons</a></b>
+<a href="{% url 'teachers' %}">teachers</a>
+<a style="margin-left: 20px;" href="{% url 'admin:index' %}">admin</a>
+<hr>
+<ul>
+    {% for lesson in lessons %}
+    <li>
+        <span>Курс: <b>{{lesson.course.name}}</b>;</span>
+        <span>Занятие: <b>{{lesson.theme}}</b>;</span>
+        <span>Преподаватель: <b>{{lesson.teacher.user}}</b></span>
+        (
+        <span>{{lesson.event_date}}</span>
+        <span>{{lesson.event_time}}</span>
+        )
+    </li>
+    {% empty %}
+    Список занятий пуст
+    {% endfor %}
+</ul>
+</body>
+</html>
